@@ -21,3 +21,6 @@ python test_c.py --model <model> --filename <output file> --inter <interlocutor 
 
 #### Emotion Detector
 please download the following link and put it in './' directory.
+```
+https://drive.google.com/file/d/1FZu2HIadORIvGD5nJAIOG6NjgtXrNXrz/view?usp=sharing
+```

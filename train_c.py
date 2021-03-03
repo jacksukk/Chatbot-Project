@@ -60,6 +60,7 @@ bad_dict = {}
 for w in bad_word:
     bad_dict[w] = 1
 
+
 def top_filtering(logits, top_k=0, top_p=0.0, filter_value=-float('Inf')):
     """ Filter a distribution of logits using top-k, top-p (nucleus) and/or threshold filtering
         Args:

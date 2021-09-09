@@ -162,7 +162,8 @@ def train(model_train, inputs_id, mask, model_2, model_bot, tokenizer, ll, args,
     temp_sentence = [[] for i in range(inputs_id.shape[0])]
     emotion_loss = [0 for i in range(inputs_id.shape[0])]
     coherence_loss = [0 for i in range(inputs_id.shape[0])]
-
+    append = torch.tensor([[1] for i in range(len(inputs_id))]).to(device_0)
+    mask = torch.cat((mask, append), 1)
     for i in range(40):
         prev_input = prev_input.to(device_0)
         logits, past = model_train(prev_input, past=past)
@@ -170,7 +171,7 @@ def train(model_train, inputs_id, mask, model_2, model_bot, tokenizer, ll, args,
 
         with torch.no_grad():
             logits_bot, past_bot = model_2(prev_input, past=past_bot)
-
+        mask = torch.cat((mask, append), 1)
         logits = logits.squeeze(0).squeeze(1)
         logits = logits / temperature
 
